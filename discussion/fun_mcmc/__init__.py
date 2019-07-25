@@ -18,6 +18,10 @@ from __future__ import absolute_import
 from __future__ import division
 from __future__ import print_function
 
+from discussion.fun_mcmc.backend import get_backend
+from discussion.fun_mcmc.backend import JAX
+from discussion.fun_mcmc.backend import set_backend
+from discussion.fun_mcmc.backend import TENSORFLOW
 from discussion.fun_mcmc.fun_mcmc_lib import adam_init
 from discussion.fun_mcmc.fun_mcmc_lib import adam_step
 from discussion.fun_mcmc.fun_mcmc_lib import AdamExtra
@@ -27,6 +31,9 @@ from discussion.fun_mcmc.fun_mcmc_lib import blanes_4_stage_step
 from discussion.fun_mcmc.fun_mcmc_lib import call_and_grads
 from discussion.fun_mcmc.fun_mcmc_lib import call_fn
 from discussion.fun_mcmc.fun_mcmc_lib import gaussian_momentum_sample
+from discussion.fun_mcmc.fun_mcmc_lib import gradient_descent_step
+from discussion.fun_mcmc.fun_mcmc_lib import GradientDescentExtra
+from discussion.fun_mcmc.fun_mcmc_lib import GradientDescentState
 from discussion.fun_mcmc.fun_mcmc_lib import hamiltonian_integrator
 from discussion.fun_mcmc.fun_mcmc_lib import hamiltonian_monte_carlo
 from discussion.fun_mcmc.fun_mcmc_lib import hamiltonian_monte_carlo_init
@@ -39,12 +46,13 @@ from discussion.fun_mcmc.fun_mcmc_lib import IntegratorStepState
 from discussion.fun_mcmc.fun_mcmc_lib import leapfrog_step
 from discussion.fun_mcmc.fun_mcmc_lib import make_gaussian_kinetic_energy_fn
 from discussion.fun_mcmc.fun_mcmc_lib import maybe_broadcast_structure
+from discussion.fun_mcmc.fun_mcmc_lib import mclachlan_optimal_4th_order_step
 from discussion.fun_mcmc.fun_mcmc_lib import metropolis_hastings_step
 from discussion.fun_mcmc.fun_mcmc_lib import PotentialFn
 from discussion.fun_mcmc.fun_mcmc_lib import ruth4_step
 from discussion.fun_mcmc.fun_mcmc_lib import sign_adaptation
+from discussion.fun_mcmc.fun_mcmc_lib import spliting_integrator_step
 from discussion.fun_mcmc.fun_mcmc_lib import State
-from discussion.fun_mcmc.fun_mcmc_lib import symmetric_spliting_integrator_step
 from discussion.fun_mcmc.fun_mcmc_lib import trace
 from discussion.fun_mcmc.fun_mcmc_lib import transform_log_prob_fn
 from discussion.fun_mcmc.fun_mcmc_lib import transition_kernel_wrapper
@@ -60,6 +68,10 @@ __all__ = [
     'call_and_grads',
     'call_fn',
     'gaussian_momentum_sample',
+    'get_backend',
+    'gradient_descent_step',
+    'GradientDescentExtra',
+    'GradientDescentState',
     'hamiltonian_integrator',
     'hamiltonian_monte_carlo',
     'hamiltonian_monte_carlo_init',
@@ -69,15 +81,19 @@ __all__ = [
     'IntegratorState',
     'IntegratorStep',
     'IntegratorStepState',
+    'JAX',
     'leapfrog_step',
     'make_gaussian_kinetic_energy_fn',
     'maybe_broadcast_structure',
+    'mclachlan_optimal_4th_order_step',
     'metropolis_hastings_step',
     'PotentialFn',
     'ruth4_step',
+    'set_backend',
     'sign_adaptation',
+    'spliting_integrator_step',
     'State',
-    'symmetric_spliting_integrator_step',
+    'TENSORFLOW',
     'trace',
     'transform_log_prob_fn',
     'transition_kernel_wrapper',

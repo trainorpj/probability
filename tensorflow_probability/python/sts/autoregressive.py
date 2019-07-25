@@ -49,7 +49,7 @@ class AutoregressiveStateSpaceModel(tfd.LinearGaussianStateSpaceModel):
   ```python
   level[t+1] = (sum(coefficients * levels[t:t-order:-1]) +
                 Normal(0., level_scale))
-   ```
+  ```
 
   The process is characterized by a vector `coefficients` whose size determines
   the order of the process (how many previous values it looks at), and by
